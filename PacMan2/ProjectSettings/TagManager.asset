@@ -9,6 +9,7 @@ TagManager:
   - Pellet
   - LeftTp
   - RightTp
+  - Ghost
   layers:
   - Default
   - TransparentFX

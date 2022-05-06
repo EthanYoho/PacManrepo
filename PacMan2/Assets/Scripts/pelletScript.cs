@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class pelletScript : MonoBehaviour
 {
-    private int count;
-    private Rigidbody rb;
-    public GameObject powerPellet;
+    
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.gameObject.GetComponent<Rigidbody>();
+        
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag.Equals("PacMan"))
+        if(other.gameObject.tag.Equals("Player"))
         {
+            CORE.score++;
             Destroy(this.gameObject);
-            count++;
+            
         }
     }
 

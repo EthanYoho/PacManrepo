@@ -18,6 +18,7 @@ public class playerScript : MonoBehaviour
     private bool goRight = false;
     private bool goLeft = false;
     private int count = 0;
+    
 
 
     void Awake()
@@ -35,25 +36,22 @@ public class playerScript : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void PelletMode()
     {
-        if(collision.gameObject.tag.Equals("Pellet"))
+        if(CORE.score >= 1)
         {
-            Destroy(powerPellet);
-            count++;
-            this.theScoreTextMesh.text = "Score: " + count;
-        }
-        else 
-        if(collision.gameObject.tag.Equals("RightTp"))
-        {
-            this.gameObject.transform.position = new Vector3(-9.874f, 0.3454f, 0.538f);
-        }
-        else
-        if (collision.gameObject.tag.Equals("LeftTp"))
-        {
-            this.gameObject.transform.position = new Vector3(9.874f, 0.3454f, 0.538f);
+          void OnTriggerEnter(Collider other)
+            {
+                if (other.gameObject.tag.Equals("Ghost"))
+                {
+                    CORE.score++;
+                    Destroy(theghostAgent);
+
+                }
+            }
         }
     }
+  
 
     // Update is called once per frame
     void Update()
